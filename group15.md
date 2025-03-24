@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c2373231-cd9c-4fa5-abcf-ad6e99248e6e)# Group 15
+# Group 15
 
 
 ## 2024303110128 吴勤玉
