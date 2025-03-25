@@ -68,10 +68,3 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
-  pdf:
-    documentclass: scrreprt
-    include-in-header: 
-          text: |
-            \usepackage{ctex}
-
-
