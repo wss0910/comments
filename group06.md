@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/33cfbdcb-32f8-43ba-a8c3-e9c7fc1d8c9c)# Group 6
+# Group 6
 
 ## 2024303120140 陈羽萱
 
