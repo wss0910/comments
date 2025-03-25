@@ -19,7 +19,7 @@ submitted = lapply(files, function(file) {
   tibble(group = group, id = ids)
 })
 
-score_table = bind_rows(submitted) |> mutate(score = 85)
+score_table = bind_rows(submitted) |> mutate(score = 85, extra = "")
 write.csv(score_table, "score-table.csv", row.names = FALSE)
 ```
 
@@ -27,4 +27,6 @@ write.csv(score_table, "score-table.csv", row.names = FALSE)
 
 线下阅读并填写打分表格。
 
+## 成绩公示
 
+公示成绩，以确保没有遗漏。公示期结束后，将成绩提交到教务系统。
