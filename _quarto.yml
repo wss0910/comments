@@ -61,12 +61,10 @@ website:
         menu:
           - merge-pr.qmd
           - reformat.qmd
+          - score.qmd
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-

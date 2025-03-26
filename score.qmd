@@ -1,0 +1,32 @@
+# 打分
+
+1. 生成打分表格
+2. 阅读并填写打分表
+
+## 生成打分表
+
+依次从各组评论中提取出学号，以学号为唯一 ID，生成打分表格。
+
+```{r}
+library(stringr)
+library(dplyr)
+files = list.files(".", pattern = "group.*.md", full.names = TRUE)
+submitted = lapply(files, function(file) {
+  group = str_extract(file, "group\\d+")
+  lines = readLines(file)
+  contents = paste(lines, collapse = "\n")
+  ids = str_extract_all(contents, "\\d{13}") |> unlist() |> unique()
+  tibble(group = group, id = ids)
+})
+
+score_table = bind_rows(submitted) |> mutate(score = 85, extra = "")
+write.csv(score_table, "score-table.csv", row.names = FALSE)
+```
+
+## 阅读并填写打分表
+
+线下阅读并填写打分表格。
+
+## 成绩公示
+
+公示成绩，以确保没有遗漏。公示期结束后，将成绩提交到教务系统。
