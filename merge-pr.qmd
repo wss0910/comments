@@ -19,15 +19,39 @@ prs
 
 对于没有冲突的 PR，直接合并。
 
+### 使用 gh 合并
+
 ```{r}
 #| eval: false
 for (i in seq_len(nrow(prs))) {
   if (prs$mergeable[i] == "MERGEABLE") {
     cmd = paste("gh pr merge", prs$number[i], "--merge --auto")
     system(cmd)
+
+    Sys.sleep(30)
   }
 }
 ```
+
+每次合并之后，需要再次获取 PR 列表，以更新 `mergeable` 状态。
+
+### 在本地合并
+
+将 PR 下载到本地，然后合并到本地分支。合并完成后，再 push 到远程分支。从而完成合并。
+
+```{r}
+#| eval: false
+
+# 下载 PR 到本地
+for (i in seq_len(nrow(prs))) {
+  pr = prs$number[i]
+  cmd = glue::glue("git fetch origin pull/{pr}/head:{pr} && git merge {pr} --auto -m 'merge pull/{pr}' && git branch -d {pr}")
+  system(cmd)
+
+}
+```
+
+继续改进的话，可以通过检查 `system()` 的返回值，来判断是否存在冲突。
 
 ## 手动合并
 
